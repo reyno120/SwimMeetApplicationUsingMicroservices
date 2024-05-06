@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{829C7D5A-1402-4EC6-9B3A-DFA2DF4E1D14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{44C50091-711F-4D27-8B21-6FF312F707FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TeamManagement", "TeamManagement", "{EBA922C6-1119-4DE3-8768-BFA1692F8536}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{1B026EFE-7DDD-4D40-B986-A46058D9A33F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MeetPlanning", "MeetPlanning", "{46FA0C87-A423-4F91-B3EC-78BEABD8B700}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Swimmers", "Swimmers", "{3FEE8FF2-42EE-4C87-AB6D-2A57716AECC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManagement.API", "TeamManagement.API\TeamManagement.API.csproj", "{89EDE16B-AF8F-4434-802A-94792FAB8F94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89EDE16B-AF8F-4434-802A-94792FAB8F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89EDE16B-AF8F-4434-802A-94792FAB8F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89EDE16B-AF8F-4434-802A-94792FAB8F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89EDE16B-AF8F-4434-802A-94792FAB8F94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44C50091-711F-4D27-8B21-6FF312F707FD} = {829C7D5A-1402-4EC6-9B3A-DFA2DF4E1D14}
+		{EBA922C6-1119-4DE3-8768-BFA1692F8536} = {44C50091-711F-4D27-8B21-6FF312F707FD}
+		{1B026EFE-7DDD-4D40-B986-A46058D9A33F} = {44C50091-711F-4D27-8B21-6FF312F707FD}
+		{46FA0C87-A423-4F91-B3EC-78BEABD8B700} = {44C50091-711F-4D27-8B21-6FF312F707FD}
+		{3FEE8FF2-42EE-4C87-AB6D-2A57716AECC3} = {44C50091-711F-4D27-8B21-6FF312F707FD}
+		{89EDE16B-AF8F-4434-802A-94792FAB8F94} = {EBA922C6-1119-4DE3-8768-BFA1692F8536}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFC238F2-445E-4634-8B89-01CE24CAD35B}
+	EndGlobalSection
+EndGlobal
