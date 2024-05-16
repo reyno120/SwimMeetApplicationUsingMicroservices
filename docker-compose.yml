@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  meetplanning.api:
+    image: ${DOCKER_REGISTRY-}meetplanningapi
+    build:
+      context: .
+      dockerfile: MeetPlanning.API/Dockerfile
+
+  teammanagement.api:
+    image: ${DOCKER_REGISTRY-}teammanagementapi
+    build:
+      context: .
+      dockerfile: TeamManagement.API/Dockerfile
+
