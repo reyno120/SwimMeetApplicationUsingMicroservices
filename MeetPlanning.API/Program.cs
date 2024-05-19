@@ -1,7 +1,6 @@
 using FastEndpoints;
 using MeetPlanning.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 //using FastEndpoints.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 builder.Services.AddFastEndpoints().AddSwaggerDocument();
 //builder.Services.SwaggerDocument(o =>
 //{
@@ -23,7 +21,7 @@ builder.Services.AddFastEndpoints().AddSwaggerDocument();
 //});
 
 builder.Services.AddDbContext<MeetPlanningDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -42,5 +40,10 @@ app.UseAuthorization();
 app.Run();
 
 
-
-
+// Note: Not idea for production environment
+// See section "Applying Migrations at Runtime"
+// https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+using (var scope = app.Services.CreateScope())
+{
+    scope.Resolve<MeetPlanningDbContext>().Database.Migrate();
+}

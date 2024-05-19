@@ -10,5 +10,9 @@ namespace MeetPlanning.Infrastructure
         }
 
         public DbSet<Meet> Meets { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        }
     }
 }

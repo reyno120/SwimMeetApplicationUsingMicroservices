@@ -1,11 +1,16 @@
 version: '3.4'
 
 services:
+  meetplanning-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest 
+
   meetplanning.api:
     image: ${DOCKER_REGISTRY-}meetplanningapi
     build:
       context: .
       dockerfile: MeetPlanning.API/Dockerfile
+    depends_on:
+        - meetplanning-db
 
   teammanagement.api:
     image: ${DOCKER_REGISTRY-}teammanagementapi

@@ -1,10 +1,13 @@
 ﻿using FastEndpoints;
 using FluentValidation;
+using MeetPlanning.Infrastructure;
 
 namespace MeetPlanning.API.MeetEndpoints
 {
     public class GetById : Endpoint<GetMeetByIdRequest, GetMeetByIdResponse>
     {
+        public MeetPlanningDbContext dbContext { get; set; }
+
         public override void Configure()
         {
             Get("/api/meet/{Id}");
@@ -19,7 +22,15 @@ namespace MeetPlanning.API.MeetEndpoints
 
         public override async Task HandleAsync(GetMeetByIdRequest req, CancellationToken ct)
         {
-            await SendAsync(new GetMeetByIdResponse("Test MeetById"));
+            var meet = await dbContext.Meets.FindAsync(1);
+            if (meet == null)
+            {
+                await SendAsync(null);
+                return;
+            }
+
+            var response = new GetMeetByIdResponse(meet.Name);
+            await SendAsync(response);
         }
     }
 
