@@ -3,6 +3,11 @@ version: '3.4'
 services:
   meetplanning-db:
     image: mcr.microsoft.com/mssql/server:2022-latest 
+    environment:
+      SA_PASSWORD: "sqlserver!Password"
+      ACCEPT_EULA: "Y"
+    ports:
+      - 1434:1433 # exposed just for debugging purposes
 
   meetplanning.api:
     image: ${DOCKER_REGISTRY-}meetplanningapi

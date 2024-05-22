@@ -21,9 +21,21 @@ builder.Services.AddFastEndpoints().AddSwaggerDocument();
 //});
 
 builder.Services.AddDbContext<MeetPlanningDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                //https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), 
+                    providerOptions => providerOptions.EnableRetryOnFailure()));
 
 var app = builder.Build();
+
+
+// Note: Not idea for production environment
+// See section "Applying Migrations at Runtime"
+// https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+using (var scope = app.Services.CreateScope())
+{
+    scope.Resolve<MeetPlanningDbContext>().Database.Migrate();
+}
+
 
 // Configure the HTTP request pipeline.
 app.UseFastEndpoints();
@@ -40,10 +52,4 @@ app.UseAuthorization();
 app.Run();
 
 
-// Note: Not idea for production environment
-// See section "Applying Migrations at Runtime"
-// https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
-using (var scope = app.Services.CreateScope())
-{
-    scope.Resolve<MeetPlanningDbContext>().Database.Migrate();
-}
+

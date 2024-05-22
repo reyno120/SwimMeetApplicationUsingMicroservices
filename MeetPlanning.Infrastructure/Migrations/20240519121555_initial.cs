@@ -22,6 +22,14 @@ namespace MeetPlanning.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Meets", x => x.Id);
                 });
+
+
+            // Seeding data should not be a part of normal app execution and only be used for development/testing
+            // https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding
+            migrationBuilder.InsertData(
+                table: "Meets",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Test DB Meet 1" });
         }
 
         /// <inheritdoc />
