@@ -13,7 +13,7 @@ services:
     image: ${DOCKER_REGISTRY-}meetplanningapi
     build:
       context: .
-      dockerfile: MeetPlanning.API/Dockerfile
+      dockerfile: src/Services/MeetPlanning/MeetPlanning.API/Dockerfile
     depends_on:
         - meetplanning-db
 
@@ -21,5 +21,5 @@ services:
     image: ${DOCKER_REGISTRY-}teammanagementapi
     build:
       context: .
-      dockerfile: TeamManagement.API/Dockerfile
+      dockerfile: src/Services/TeamManagement/TeamManagement.API/Dockerfile
 
