@@ -41,6 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManager.UseCases", "src\Services\TeamManagement\TeamManager.Application\TeamManager.UseCases.csproj", "{116DF147-97B2-4467-BC27-3DE256E64B01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactSPA.Server", "src\WebApp\ReactSPA.Server\ReactSPA.Server.csproj", "{57ED00F6-9FB2-4131-998C-71CA6588E868}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactspa.client", "src\WebApp\reactspa.client\reactspa.client.esproj", "{327715A0-E186-4A25-A6F3-22F27063E72C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,16 @@ Global
 		{116DF147-97B2-4467-BC27-3DE256E64B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{116DF147-97B2-4467-BC27-3DE256E64B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{116DF147-97B2-4467-BC27-3DE256E64B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57ED00F6-9FB2-4131-998C-71CA6588E868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57ED00F6-9FB2-4131-998C-71CA6588E868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57ED00F6-9FB2-4131-998C-71CA6588E868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57ED00F6-9FB2-4131-998C-71CA6588E868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327715A0-E186-4A25-A6F3-22F27063E72C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327715A0-E186-4A25-A6F3-22F27063E72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327715A0-E186-4A25-A6F3-22F27063E72C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{327715A0-E186-4A25-A6F3-22F27063E72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327715A0-E186-4A25-A6F3-22F27063E72C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327715A0-E186-4A25-A6F3-22F27063E72C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +123,8 @@ Global
 		{11508D76-19F8-40A8-BD83-0826A4680FD1} = {EBA922C6-1119-4DE3-8768-BFA1692F8536}
 		{1AD873A3-EBEB-4459-BB47-74191D323D54} = {EBA922C6-1119-4DE3-8768-BFA1692F8536}
 		{116DF147-97B2-4467-BC27-3DE256E64B01} = {EBA922C6-1119-4DE3-8768-BFA1692F8536}
+		{57ED00F6-9FB2-4131-998C-71CA6588E868} = {FD835EE4-F849-4F0C-8CC4-DF931BA9A40D}
+		{327715A0-E186-4A25-A6F3-22F27063E72C} = {FD835EE4-F849-4F0C-8CC4-DF931BA9A40D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFC238F2-445E-4634-8B89-01CE24CAD35B}

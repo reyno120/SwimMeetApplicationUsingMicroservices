@@ -5,7 +5,8 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "meetplanning.api": "StartDebugging",
-        "teammanagement.api": "StartDebugging"
+        "teammanagement.api": "StartDebugging",
+        "reactspa.server": "StartDebugging"
       }
     }
   }
