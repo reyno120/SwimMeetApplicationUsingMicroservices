@@ -6,7 +6,8 @@
       "serviceActions": {
         "meetplanning.api": "StartDebugging",
         "teammanagement.api": "StartDebugging",
-        "reactspa.server": "StartDebugging"
+        "reactspa.server": "StartDebugging",
+        "ocelot": "StartDebugging"
       }
     }
   }

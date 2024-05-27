@@ -1,0 +1,20 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/meet/{id}",
+      //"DownstreamScheme": "https",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "meetplanning.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/meet/{id}",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:53534"
+  }
+}

@@ -30,3 +30,13 @@ services:
       context: .
       dockerfile: src/WebApp/ReactSPA.Server/Dockerfile
 
+
+  ocelotgw:
+    image: ${DOCKER_REGISTRY-}ocelotgw
+    build:
+      context: .
+      dockerfile: src/APIGateway/OcelotGw/Dockerfile
+    ports:
+        - 53534:8080
+        - 53535:8081
+
