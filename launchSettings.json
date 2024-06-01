@@ -3,11 +3,26 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "meetplanning.api", // VS only allows WebAPI projects to be defined as launch startups
+      "composeLaunchUrl": "http://localhost:5173",
       "serviceActions": {
         "meetplanning.api": "StartDebugging",
         "teammanagement.api": "StartDebugging",
-        "reactspa.server": "StartDebugging",
-        "ocelot": "StartDebugging"
+        "reactspa": "StartWithoutDebugging",
+        "meetplanning-db": "StartWithoutDebugging",
+        "ocelotgw": "StartDebugging"
+      }
+    },
+    "Docker Compose Backend": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "meetplanning.api": "StartDebugging",
+        "meetplanning-db": "StartWithoutDebugging",
+        "ocelotgw": "StartDebugging",
+        "reactspa": "DoNotStart",
+        "teammanagement.api": "StartDebugging"
       }
     }
   }

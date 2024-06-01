@@ -6,8 +6,8 @@
     <DockerPublishLocally>False</DockerPublishLocally>
     <ProjectGuid>75a0c0e4-38e4-4c14-905d-488a60c5a7b4</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>meetplanning.api</DockerServiceName>
+    <DockerServiceUrl>http://localhost:5173</DockerServiceUrl>
+    <DockerServiceName>reactspa</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

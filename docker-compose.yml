@@ -16,19 +16,28 @@ services:
       dockerfile: src/Services/MeetPlanning/MeetPlanning.API/Dockerfile
     depends_on:
         - meetplanning-db
+    ports:
+      - 55382:8080  # exposed just for debugging
 
   teammanagement.api:
     image: ${DOCKER_REGISTRY-}teammanagementapi
     build:
       context: .
       dockerfile: src/Services/TeamManagement/TeamManagement.API/Dockerfile
+    ports:
+      - 55378:8080  # exposed just for debugging
 
 
-  reactspa.server:
-    image: ${DOCKER_REGISTRY-}reactspaserver
+  reactspa:
+    image: ${DOCKER_REGISTRY-}reactspa
     build:
-      context: .
-      dockerfile: src/WebApp/ReactSPA.Server/Dockerfile
+      context: src/WebApp/ReactSPA
+      dockerfile: Dockerfile
+    ports:
+        - 5173:5173
+    environment:
+      - APIGATEWAY_HTTP_URL=ocelotgw:8080
+
 
 
   ocelotgw:
@@ -39,4 +48,7 @@ services:
     ports:
         - 53534:8080
         - 53535:8081
+
+
+
 

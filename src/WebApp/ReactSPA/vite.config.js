@@ -12,7 +12,7 @@ import { env } from 'process';
 //         ? `${env.APPDATA}/ASP.NET/https`
 //         : `${env.HOME}/.aspnet/https`;
 
-// const certificateName = "reactspa.client";
+// const certificateName = "reactspa";
 // const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
 // const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
 
@@ -30,8 +30,11 @@ import { env } from 'process';
 //     }
 // }
 
-const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
-    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7001';
+//const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
+//    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7001';
+
+// Target changes when frontent app is running from a container inside the same docker host as the backend
+const target = env.APIGATEWAY_HTTP_URL ? `http://${env.APIGATEWAY_HTTP_URL}` : 'http://localhost:53534';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -44,7 +47,7 @@ export default defineConfig({
     server: {
         host: true,
         proxy: {
-            '^/weatherforecast': {
+            '^/api/meet': {
                 target,
                 secure: false
             }
