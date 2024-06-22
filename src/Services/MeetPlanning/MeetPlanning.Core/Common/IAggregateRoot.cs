@@ -1,7 +1,7 @@
 ﻿
 namespace MeetPlanning.Core.Common
 {
-    internal interface IAggregateRoot
+    public interface IAggregateRoot
     {
     }
 }

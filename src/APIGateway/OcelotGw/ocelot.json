@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/meet/{id}",
+      "DownstreamPathTemplate": "/api/v1/meet/{id}",
       //"DownstreamScheme": "https",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -10,7 +10,7 @@
           "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/api/meet/{id}",
+      "UpstreamPathTemplate": "/api/v1/meet/{id}",
       "UpstreamHttpMethod": [ "Get" ]
     }
   ],

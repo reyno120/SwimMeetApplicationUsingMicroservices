@@ -1,4 +1,5 @@
 using FastEndpoints;
+using MassTransit;
 using MeetPlanning.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 //using FastEndpoints.Swagger;
@@ -19,6 +20,27 @@ builder.Services.AddFastEndpoints().AddSwaggerDocument();
 //        s.Version = "v1";
 //    };
 //});
+
+builder.Services.AddMassTransit(x =>
+{
+    //x.AddConsumer<MeetCreatedIntegrationEventHandler>();
+    // easier way to add all consumers?
+    // use guest for production environment?
+
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+        //cfg.ReceiveEndpoint("meet-planner", e =>
+        //{
+        //    e.ConfigureConsumer<MeetCreatedIntegrationEventHandler>(context);
+        //});
+    });
+});
 
 builder.Services.AddDbContext<MeetPlanningDbContext>(options =>
                 //https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency

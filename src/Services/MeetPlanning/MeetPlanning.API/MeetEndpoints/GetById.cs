@@ -10,7 +10,7 @@ namespace MeetPlanning.API.MeetEndpoints
 
         public override void Configure()
         {
-            Get("/api/meet/{Id}");
+            Get("/api/v1/meets/{Id}");
             // TODO: Fix Swagger & add Swagger Documentation
             //Summary(s =>
             //{
