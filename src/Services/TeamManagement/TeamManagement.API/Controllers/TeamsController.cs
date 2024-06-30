@@ -1,14 +1,17 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TeamManager.UseCases.Commands;
 using TeamManager.UseCases.Queries;
 
 namespace TeamManagement.API.Controllers
 {
-    public class TeamController : Controller
+    [ApiController]
+    [Route("teams")]
+    public class TeamsController : Controller
     {
         private readonly IMediator _mediator;
 
-        public TeamController(IMediator mediator)
+        public TeamsController(IMediator mediator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
@@ -22,6 +25,14 @@ namespace TeamManagement.API.Controllers
             // webapi best practices
             var team = await _mediator.Send(new GetTeamByIdQuery(id));
             return Ok(team);
+        }
+
+        [HttpPost]
+        [Route("add")]
+        public async Task<ActionResult> AddTeam(Guid coachId, string teamName)
+        {
+            await _mediator.Send(new AddTeamCommand(coachId, teamName));
+            return NoContent();
         }
     }
 }

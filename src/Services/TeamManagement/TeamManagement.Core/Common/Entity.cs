@@ -1,13 +1,13 @@
 ﻿
 namespace TeamManagement.Core.Common
 {
-    public abstract class Entity<T>
+    public abstract class Entity
     {
-        private readonly List<BaseDomainEvent> _domainEvents = new List<BaseDomainEvent>();
-        public virtual IReadOnlyList<BaseDomainEvent> DomainEvents => _domainEvents;
-        public T Id { get; protected set; }
+        public Guid Id { get; protected set; }
 
-        protected virtual void AddDomainEvent(BaseDomainEvent newEvent)
+        private readonly List<BaseDomainEvent> _domainEvents = new List<BaseDomainEvent>();
+        public virtual IReadOnlyList<BaseDomainEvent> DomainEvents => _domainEvents;    // TODO: Why Virtual?
+        protected virtual void AddDomainEvent(BaseDomainEvent newEvent) // TODO: why virtual?
         {
             _domainEvents.Add(newEvent);
         }

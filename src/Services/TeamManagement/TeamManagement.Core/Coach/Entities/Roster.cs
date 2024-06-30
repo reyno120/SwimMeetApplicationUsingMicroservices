@@ -1,15 +1,9 @@
 ﻿using Ardalis.GuardClauses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Versioning;
-using System.Text;
-using System.Threading.Tasks;
 using TeamManagement.Core.Common;
 
 namespace TeamManagement.Core.Coach.Entities
 {
-    public class Roster : Entity<int>
+    public class Roster : Entity
     {
         public string Name { get; private set; }
         public int MeetId { get; private set; }

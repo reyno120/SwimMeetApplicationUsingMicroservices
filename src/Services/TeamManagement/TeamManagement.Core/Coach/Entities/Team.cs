@@ -8,7 +8,7 @@ using TeamManagement.Core.Common;
 
 namespace TeamManagement.Core.Coach.Entities
 {
-    public class Team : Entity<Guid>
+    public class Team : Entity
     {
         public string Name { get; private set; }
 

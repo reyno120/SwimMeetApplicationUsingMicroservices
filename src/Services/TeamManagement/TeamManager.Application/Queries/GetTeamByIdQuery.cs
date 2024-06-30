@@ -63,7 +63,7 @@ namespace TeamManager.UseCases.Queries
                 return new GetTeamByIdQueryResult("Team 1", swimmers);
             }
 
-            return new GetTeamByIdQueryResult(null, new List<GetTeamByIdQueryResult_Swimmer>()); ;
+            return new GetTeamByIdQueryResult(null, new List<GetTeamByIdQueryResult_Swimmer>()); 
         }
     }
 
