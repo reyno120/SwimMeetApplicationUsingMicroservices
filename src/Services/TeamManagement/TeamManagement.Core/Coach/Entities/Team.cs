@@ -20,7 +20,7 @@ namespace TeamManagement.Core.Coach.Entities
         {
             Id = Guid.NewGuid();
             Name = Guard.Against.NullOrEmpty(name);
-            _swimmers = Guard.Against.NullOrEmpty(swimmers).ToList();
+            //_swimmers = Guard.Against.NullOrEmpty(swimmers).ToList(); // commented out for testing
         }
 
         //public void ModifyTeam(List<Guid> swimmers)

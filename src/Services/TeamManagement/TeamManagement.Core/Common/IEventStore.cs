@@ -1,7 +1,4 @@
-﻿
-using TeamManagement.Core.Common;
-
-namespace TeamManagement.Core
+﻿namespace TeamManagement.Core.Common
 {
     public interface IEventStore<TAggregate>
         where TAggregate : AggregateRoot, IAggregateRoot

@@ -1,6 +1,7 @@
 ﻿using EventStore.Client;
 using MediatR;
-using TeamManagement.Core;
+using Newtonsoft.Json;
+using System.Text;
 using TeamManagement.Core.Common;
 
 namespace TeamManagement.Infrastructure
@@ -8,6 +9,8 @@ namespace TeamManagement.Infrastructure
     public class EventStore<TAggregate> : IEventStore<TAggregate>
         where TAggregate : AggregateRoot, IAggregateRoot
     {
+        private static Dictionary<string, Type> _esEventTypes = GetESEventTypes();
+
         private readonly EventStoreClient _eventStoreClient;
         private readonly IMediator _mediator;
 
@@ -20,14 +23,26 @@ namespace TeamManagement.Infrastructure
 
         public async Task<TAggregate?> Find(Guid id, CancellationToken cancellationToken)
         {
-            var readResult = _eventStoreClient.ReadStreamAsync(
+            var readResult = await _eventStoreClient.ReadStreamAsync(
                 Direction.Forwards,
                 $"{typeof(TAggregate).Name}-{id}",
                 StreamPosition.Start,
                 cancellationToken: cancellationToken
-            );
+            ).ToListAsync();
 
-            var events = await readResult.ToListAsync();
+
+            var events = new List<object>();
+            foreach (var result in readResult)
+            {
+                var type = _esEventTypes[result.Event.EventType];
+
+                var stringValue = Encoding.UTF8.GetString(result.Event.Data.ToArray());
+                var data = JsonConvert.DeserializeObject(stringValue, type);
+
+                events.Add(data);
+            }
+
+
             return (TAggregate)Activator.CreateInstance(typeof(TAggregate), events);
         }
 
@@ -70,5 +85,15 @@ namespace TeamManagement.Infrastructure
         //    // Use reflection to collect domain events off of each entity
         //    // within the aggregate
         //}
+
+        private static Dictionary<string, Type> GetESEventTypes()
+        {
+            // Gets dictionary of Class Names -> Type for faster lookup
+            return AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeof(IESEvent).IsAssignableFrom(p))
+                .ToDictionary(x => x.Name, x => x);
+
+        }
     }
 }

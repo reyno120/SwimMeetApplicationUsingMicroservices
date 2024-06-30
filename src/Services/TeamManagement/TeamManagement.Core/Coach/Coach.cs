@@ -1,8 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using TeamManagement.Core.Coach.Entities;
-using TeamManagement.Core.Coach.Events;
+using TeamManagement.Core.Coach.ESEvents;
 using TeamManagement.Core.Common;
-using TeamManager.Core.Common;
 
 namespace TeamManagement.Core.Coach
 {
@@ -27,7 +26,7 @@ namespace TeamManagement.Core.Coach
         {
             Id = Guid.NewGuid();
             Name = Guard.Against.NullOrEmpty(name);
-            AddSourcedEvent(new CoachRegisteredEvent(this.Id, name));
+            AddESEvent(new CoachRegisteredESEvent(this.Id, name));
         }
 
         #region Behaviors
@@ -41,7 +40,7 @@ namespace TeamManagement.Core.Coach
 
             var team = new Team(name, swimmers);
             _teams.Add(team);
-            AddSourcedEvent(new TeamAddedEvent(team.Name));
+            AddESEvent(new TeamAddedESEvent(team.Name));
         }
 
         #endregion
@@ -53,17 +52,30 @@ namespace TeamManagement.Core.Coach
             foreach (var @event in events)
             {
                 _version++;
-                RedirectToWhen.InvokeEventOptional(this, @event);
+
+                switch(@event)
+                {
+                    case CoachRegisteredESEvent:
+                        Apply((CoachRegisteredESEvent)@event);
+                        break;
+
+                    case TeamAddedESEvent:
+                        Apply((TeamAddedESEvent)@event);
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
 
-        private void When(CoachRegisteredEvent @event)
+        private void Apply(CoachRegisteredESEvent @event)
         {
             Id = @event.Id;
             Name = @event.Name; 
         }
 
-        private void When(TeamAddedEvent @event)
+        private void Apply(TeamAddedESEvent @event)
         {
             var team = new Team(@event.Name, new List<Guid>());
             _teams.Add(team);
